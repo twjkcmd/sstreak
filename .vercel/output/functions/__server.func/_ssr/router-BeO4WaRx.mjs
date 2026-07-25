@@ -1,11 +1,11 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { s as require_jsx_runtime } from "../_libs/@radix-ui/react-collection+[...].mjs";
-import { c as HeadContent, d as Outlet, f as lazyRouteComponent, g as useRouter, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
+import { _ as useRouter, c as HeadContent, d as createRouter, f as Outlet, g as Link, h as createRootRouteWithContext, m as createFileRoute, p as lazyRouteComponent, s as Scripts } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as Toaster } from "../_libs/sonner.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
 import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-Dlm-nlIy.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BeO4WaRx.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var styles_default = "/assets/styles-CDzKt8fC.css";
@@ -95,7 +95,7 @@ function ErrorComponent({ error, reset }) {
 		})
 	});
 }
-var Route$4 = createRootRouteWithContext()({
+var Route$5 = createRootRouteWithContext()({
 	head: () => ({
 		meta: [{ charSet: "utf-8" }, {
 			name: "viewport",
@@ -138,14 +138,14 @@ function RootShell({ children }) {
 	});
 }
 function RootComponent() {
-	const { queryClient } = Route$4.useRouteContext();
+	const { queryClient } = Route$5.useRouteContext();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(QueryClientProvider, {
 		client: queryClient,
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, { position: "bottom-right" })]
 	});
 }
-var $$splitComponentImporter$1 = () => import("./routes-BAaiPMWf.mjs");
-var Route$3 = createFileRoute("/")({
+var $$splitComponentImporter$2 = () => import("./routes-CyLpWNqe.mjs");
+var Route$4 = createFileRoute("/")({
 	head: () => ({ meta: [
 		{ title: "ShipStreak — Track streaks. Show them off." },
 		{
@@ -169,10 +169,10 @@ var Route$3 = createFileRoute("/")({
 			content: "summary_large_image"
 		}
 	] }),
-	component: lazyRouteComponent($$splitComponentImporter$1, "component")
+	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter = () => import("./app-DAU8vsow.mjs");
-var Route$2 = createFileRoute("/app")({
+var $$splitComponentImporter$1 = () => import("./app-Co5g_xKO.mjs");
+var Route$3 = createFileRoute("/app")({
 	head: () => ({ meta: [
 		{ title: "Your habits · ShipStreak" },
 		{
@@ -192,10 +192,10 @@ var Route$2 = createFileRoute("/app")({
 			content: "noindex"
 		}
 	] }),
-	component: lazyRouteComponent($$splitComponentImporter, "component")
+	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
 var BASE_URL = "";
-var Route$1 = createFileRoute("/sitemap.xml")({ server: { handlers: { GET: async () => {
+var Route$2 = createFileRoute("/sitemap.xml")({ server: { handlers: { GET: async () => {
 	const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[{
 		path: "/",
 		changefreq: "weekly",
@@ -252,7 +252,7 @@ function generateBadgeSvg({ name, streak }) {
   </g>
 </svg>`;
 }
-var Route = createFileRoute("/api/badge/svg")({ server: { handlers: { GET: async ({ request }) => {
+var Route$1 = createFileRoute("/api/badge.svg")({ server: { handlers: { GET: async ({ request }) => {
 	const url = new URL(request.url);
 	const svg = generateBadgeSvg(sanitizeBadgeParams(url.searchParams.get("name") || "", url.searchParams.get("streak") || "0"));
 	return new Response(svg, { headers: {
@@ -260,29 +260,61 @@ var Route = createFileRoute("/api/badge/svg")({ server: { handlers: { GET: async
 		"Cache-Control": "public, max-age=300"
 	} });
 } } } });
+var $$splitComponentImporter = () => import("./app.badges-BUtrGDS1.mjs");
+var Route = createFileRoute("/app/badges")({
+	head: () => ({ meta: [
+		{ title: "Badges · ShipStreak" },
+		{
+			name: "description",
+			content: "View your achievements and badges earned through habit tracking."
+		},
+		{
+			property: "og:title",
+			content: "Badges · ShipStreak"
+		},
+		{
+			property: "og:description",
+			content: "View your achievements and badges earned through habit tracking."
+		},
+		{
+			name: "robots",
+			content: "noindex"
+		}
+	] }),
+	component: lazyRouteComponent($$splitComponentImporter, "component")
+});
+var IndexRoute = Route$4.update({
+	id: "/",
+	path: "/",
+	getParentRoute: () => Route$5
+});
+var AppRoute = Route$3.update({
+	id: "/app",
+	path: "/app",
+	getParentRoute: () => Route$5
+});
+var SitemapDotxmlRoute = Route$2.update({
+	id: "/sitemap.xml",
+	path: "/sitemap.xml",
+	getParentRoute: () => Route$5
+});
+var ApiBadgeDotsvgRoute = Route$1.update({
+	id: "/api/badge.svg",
+	path: "/api/badge.svg",
+	getParentRoute: () => Route$5
+});
+var AppRouteChildren = { AppBadgesRoute: Route.update({
+	id: "/badges",
+	path: "/badges",
+	getParentRoute: () => AppRoute
+}) };
 var rootRouteChildren = {
-	IndexRoute: Route$3.update({
-		id: "/",
-		path: "/",
-		getParentRoute: () => Route$4
-	}),
-	AppRoute: Route$2.update({
-		id: "/app",
-		path: "/app",
-		getParentRoute: () => Route$4
-	}),
-	SitemapDotxmlRoute: Route$1.update({
-		id: "/sitemap.xml",
-		path: "/sitemap.xml",
-		getParentRoute: () => Route$4
-	}),
-	ApiBadgeSvgRoute: Route.update({
-		id: "/api/badge/svg",
-		path: "/api/badge/svg",
-		getParentRoute: () => Route$4
-	})
+	IndexRoute,
+	AppRoute: AppRoute._addFileChildren(AppRouteChildren),
+	SitemapDotxmlRoute,
+	ApiBadgeDotsvgRoute
 };
-var routeTree = Route$4._addFileChildren(rootRouteChildren)._addFileTypes();
+var routeTree = Route$5._addFileChildren(rootRouteChildren)._addFileTypes();
 var getRouter = () => {
 	return createRouter({
 		routeTree,

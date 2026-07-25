@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
+import { Route as BadgesRouteImport } from './routes/badges'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ApiBadgeDotsvgRouteImport } from './routes/api/badge[.]svg'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const AppRoute = AppRouteImport.update({
   id: '/app',
   path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BadgesRoute = BadgesRouteImport.update({
+  id: '/badges',
+  path: '/badges',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -38,12 +44,14 @@ const ApiBadgeDotsvgRoute = ApiBadgeDotsvgRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRoute
+  '/badges': typeof BadgesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/badge.svg': typeof ApiBadgeDotsvgRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRoute
+  '/badges': typeof BadgesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/badge.svg': typeof ApiBadgeDotsvgRoute
 }
@@ -51,20 +59,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRoute
+  '/badges': typeof BadgesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/badge.svg': typeof ApiBadgeDotsvgRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/sitemap.xml' | '/api/badge.svg'
+  fullPaths: '/' | '/app' | '/badges' | '/sitemap.xml' | '/api/badge.svg'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app' | '/sitemap.xml' | '/api/badge.svg'
-  id: '__root__' | '/' | '/app' | '/sitemap.xml' | '/api/badge.svg'
+  to: '/' | '/app' | '/badges' | '/sitemap.xml' | '/api/badge.svg'
+  id: '__root__' | '/' | '/app' | '/badges' | '/sitemap.xml' | '/api/badge.svg'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRoute
+  BadgesRoute: typeof BadgesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ApiBadgeDotsvgRoute: typeof ApiBadgeDotsvgRoute
 }
@@ -83,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/app'
       fullPath: '/app'
       preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/badges': {
+      id: '/badges'
+      path: '/badges'
+      fullPath: '/badges'
+      preLoaderRoute: typeof BadgesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRoute,
+  BadgesRoute: BadgesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ApiBadgeDotsvgRoute: ApiBadgeDotsvgRoute,
 }

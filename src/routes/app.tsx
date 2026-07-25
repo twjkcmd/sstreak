@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   loadHabits,
@@ -150,6 +150,10 @@ function AppNav({
 }: {
   onCreate: (h: { name: string; emoji: string }) => void;
 }) {
+  const location = useLocation();
+  const isHabitsActive = location.pathname === "/app";
+  const isBadgesActive = location.pathname === "/badges";
+
   return (
     <header className="border-b border-border bg-background/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
@@ -161,8 +165,12 @@ function AppNav({
             <span className="font-display text-2xl text-ink">ShipStreak</span>
           </Link>
           <nav className="hidden items-center gap-1 md:flex">
-            <NavTab active>Habits</NavTab>
-            <NavTab>Badges</NavTab>
+            <Link to="/app">
+              <NavTab active={isHabitsActive}>Habits</NavTab>
+            </Link>
+            <Link to="/badges">
+              <NavTab active={isBadgesActive}>Badges</NavTab>
+            </Link>
           </nav>
         </div>
         <AddHabitDialog onCreate={onCreate} />

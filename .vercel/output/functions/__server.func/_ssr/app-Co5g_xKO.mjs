@@ -2,14 +2,15 @@ import { r as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { s as require_jsx_runtime } from "../_libs/@radix-ui/react-collection+[...].mjs";
 import { t as cva } from "../_libs/class-variance-authority+clsx.mjs";
+import { a as currentStreak, c as saveHabits, d as totalDays, f as uid, i as cn, l as todayKey, n as addDays, o as loadHabits, s as longestStreak, t as Card, u as toggleCompletion } from "./card-CQAh1Bbr.mjs";
 import { a as DialogOverlay$1, c as DialogTrigger$1, i as DialogDescription$1, n as DialogClose, o as DialogPortal$1, r as DialogContent$1, s as DialogTitle$1, t as Dialog$1 } from "../_libs/@radix-ui/react-dialog+[...].mjs";
 import { a as DropdownMenuItemIndicator, c as DropdownMenuRadioItem$1, d as DropdownMenuSubTrigger$1, f as DropdownMenuTrigger$1, i as DropdownMenuItem$1, l as DropdownMenuSeparator$1, n as DropdownMenuCheckboxItem$1, o as DropdownMenuLabel$1, r as DropdownMenuContent$1, s as DropdownMenuPortal, t as DropdownMenu$1, u as DropdownMenuSubContent$1 } from "../_libs/@radix-ui/react-dropdown-menu+[...].mjs";
-import { a as cn, c as longestStreak, d as toggleCompletion, f as totalDays, i as addDays, l as saveHabits, n as Card, o as currentStreak, p as uid, r as ContributionGrid, s as loadHabits, t as Button, u as todayKey } from "./ContributionGrid-ZOANfUYX.mjs";
-import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
+import { n as ContributionGrid, t as Button } from "./ContributionGrid-D6DcYdc_.mjs";
+import { g as Link, l as useLocation } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as toast } from "../_libs/sonner.mjs";
-import { a as Sparkles, c as Layers, d as Copy, f as Circle, g as ArrowRight, h as Calendar, l as Flame, m as Check, o as Plus, p as ChevronRight, r as Trash2, s as Pencil, t as X, u as EllipsisVertical } from "../_libs/lucide-react.mjs";
+import { _ as Calendar, c as Pencil, d as Flame, f as EllipsisVertical, g as Check, h as ChevronRight, m as Circle, o as Sparkles, p as Copy, r as Trash2, s as Plus, t as X, u as Layers, v as ArrowRight } from "../_libs/lucide-react.mjs";
 import { t as Label$1 } from "../_libs/radix-ui__react-label.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/app-DAU8vsow.js
+//#region node_modules/.nitro/vite/services/ssr/assets/app-Co5g_xKO.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var Dialog = Dialog$1;
@@ -568,6 +569,9 @@ function AppPage() {
 	});
 }
 function AppNav({ onCreate }) {
+	const location = useLocation();
+	const isHabitsActive = location.pathname === "/app";
+	const isBadgesActive = location.pathname === "/app/badges";
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
 		className: "border-b border-border bg-background/80 backdrop-blur",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -589,10 +593,19 @@ function AppNav({ onCreate }) {
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
 					className: "hidden items-center gap-1 md:flex",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavTab, {
-						active: true,
-						children: "Habits"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavTab, { children: "Badges" })]
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						to: "/app",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavTab, {
+							active: isHabitsActive,
+							children: "Habits"
+						})
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						to: "/app/badges",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavTab, {
+							active: isBadgesActive,
+							children: "Badges"
+						})
+					})]
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AddHabitDialog, { onCreate })]
 		})
