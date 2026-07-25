@@ -21,6 +21,13 @@ function escapeXml(unsafe: string): string {
 }
 
 /**
+ * Format streak text with proper pluralization
+ */
+export function formatStreakText(streak: number): string {
+  return `${streak} day${streak === 1 ? "" : "s"}`;
+}
+
+/**
  * Sanitize and validate badge parameters
  */
 export function sanitizeBadgeParams(name: string, streak: string | number): BadgeSvgOptions {
@@ -44,7 +51,7 @@ export function sanitizeBadgeParams(name: string, streak: string | number): Badg
  */
 export function generateBadgeSvg({ name, streak }: BadgeSvgOptions): string {
   const label = `ShipStreak: ${name}`;
-  const value = `🔥 ${streak} days`;
+  const value = `🔥 ${formatStreakText(streak)}`;
 
   // approximate widths via char count (same logic as StreakBadge.tsx)
   const labelW = Math.max(72, label.length * 6.5 + 16);

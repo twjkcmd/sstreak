@@ -1,3 +1,5 @@
+import { formatStreakText } from "@/lib/badge-svg";
+
 type Props = {
   name: string;
   streak: number;
@@ -6,7 +8,7 @@ type Props = {
 /** Shields.io-style inline SVG badge */
 export function StreakBadge({ name, streak }: Props) {
   const label = `ShipStreak: ${name}`;
-  const value = `🔥 ${streak} days`;
+  const value = `🔥 ${formatStreakText(streak)}`;
 
   // approximate widths via char count
   const labelW = Math.max(72, label.length * 6.5 + 16);

@@ -113,13 +113,13 @@ export function buildGrid(
   const todayDate = new Date(ty, tm - 1, td);
   const todayDow = (todayDate.getDay() + 6) % 7; // Mon=0..Sun=6
   
-  // Calculate the start date: Monday of the week that contains the first day (91 days ago)
-  const daysAgo = 90; // 91 days total (0 to 90)
-  const firstDate = new Date(todayDate);
-  firstDate.setDate(firstDate.getDate() - daysAgo);
-  const firstDow = (firstDate.getDay() + 6) % 7;
-  const startDate = new Date(firstDate);
-  startDate.setDate(startDate.getDate() - firstDow); // Go back to Monday of that week
+  // Calculate end boundary: Sunday of the week containing today
+  const endDate = new Date(todayDate);
+  endDate.setDate(endDate.getDate() + (6 - todayDow)); // Move to Sunday
+  
+  // Calculate start: 13 full weeks (91 days) before the end Sunday
+  const startDate = new Date(endDate);
+  startDate.setDate(startDate.getDate() - (cols * rows - 1)); // 91 days back
   
   // Initialize grid
   const grid: GridCell[][] = Array.from({ length: rows }, () =>

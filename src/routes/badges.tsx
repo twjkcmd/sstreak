@@ -1,7 +1,8 @@
-import { createFileRoute, Link, useLocation } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { loadHabits, type Habit } from "@/lib/habits";
 import { achievements } from "@/lib/achievements";
+import { AppNav } from "@/components/AppNav";
 import { Card } from "@/components/ui/card";
 import { Flame, Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -39,7 +40,7 @@ function BadgesPage() {
   return (
     <div className="min-h-screen bg-background grain">
       <AppNav />
-      <main className="mx-auto max-w-4xl px-6 pb-24 pt-6">
+      <main className="mx-auto max-w-6xl px-6 pb-24 pt-6">
         <div className="mb-8">
           <h1 className="font-display text-4xl text-ink">Badges</h1>
           <p className="mt-1 text-muted-foreground">
@@ -125,56 +126,6 @@ function BadgesPage() {
           </div>
         )}
       </main>
-    </div>
-  );
-}
-
-function AppNav() {
-  const location = useLocation();
-  const isHabitsActive = location.pathname === "/app";
-  const isBadgesActive = location.pathname === "/badges";
-
-  return (
-    <header className="border-b border-border bg-background/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-6">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-flame text-flame-foreground">
-              <Flame className="h-4 w-4" fill="currentColor" />
-            </span>
-            <span className="font-display text-2xl text-ink">ShipStreak</span>
-          </Link>
-          <nav className="hidden items-center gap-1 md:flex">
-            <Link to="/app">
-              <NavTab active={isHabitsActive}>Habits</NavTab>
-            </Link>
-            <Link to="/badges">
-              <NavTab active={isBadgesActive}>Badges</NavTab>
-            </Link>
-          </nav>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function NavTab({
-  children,
-  active,
-}: {
-  children: React.ReactNode;
-  active?: boolean;
-}) {
-  return (
-    <div
-      className={cn(
-        "rounded-full px-3.5 py-1.5 text-sm transition-colors",
-        active
-          ? "bg-primary text-primary-foreground"
-          : "text-muted-foreground hover:text-foreground",
-      )}
-    >
-      {children}
     </div>
   );
 }
