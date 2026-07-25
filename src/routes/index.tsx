@@ -1,4 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ContributionGrid } from "@/components/ContributionGrid";
 import { Card } from "@/components/ui/card";
@@ -53,14 +61,17 @@ const demoCompletions = (() => {
 })();
 
 function Landing() {
+  const [howItWorksOpen, setHowItWorksOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background grain">
       <Nav />
       <main className="mx-auto max-w-7xl px-6 pb-24 pt-8">
-        <Hero />
+        <Hero onOpenHowItWorks={() => setHowItWorksOpen(true)} />
         <BelowHero />
       </main>
       <Footer />
+      <HowItWorksDialog open={howItWorksOpen} onOpenChange={setHowItWorksOpen} />
     </div>
   );
 }
@@ -89,14 +100,10 @@ function Nav() {
 }
 
 function LogoMark() {
-  return (
-    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-flame text-flame-foreground">
-      <Flame className="h-4 w-4" fill="currentColor" />
-    </span>
-  );
+  return <img src="/favicon.svg" alt="ShipStreak" className="h-8 w-8" />;
 }
 
-function Hero() {
+function Hero({ onOpenHowItWorks }: { onOpenHowItWorks: () => void }) {
   return (
     <section className="hero-glow mt-16 grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
       <div>
@@ -127,37 +134,10 @@ function Hero() {
             size="lg"
             variant="ghost"
             className="rounded-full border border-border bg-background/60 backdrop-blur hover:bg-secondary"
+            onClick={onOpenHowItWorks}
           >
             See how it works
           </Button>
-        </div>
-        <div className="mt-10 flex items-center gap-4">
-          <div className="flex -space-x-2">
-            {[
-              "from-flame to-amber-300",
-              "from-violet-bright to-indigo-400",
-              "from-purple-400 to-pink-400",
-              "from-blue-400 to-cyan-300",
-            ].map((g, i) => (
-              <div
-                key={i}
-                className={cn(
-                  "h-9 w-9 rounded-full bg-gradient-to-br ring-2 ring-background",
-                  g,
-                )}
-              />
-            ))}
-          </div>
-          <div className="text-sm">
-            <div className="flex items-center gap-1 text-flame">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-3.5 w-3.5" fill="currentColor" />
-              ))}
-            </div>
-            <div className="text-muted-foreground">
-              Trusted by <span className="text-ink font-medium">500+ makers</span>
-            </div>
-          </div>
         </div>
       </div>
       <div className="lg:max-w-[520px] lg:justify-self-end w-full">
@@ -190,10 +170,7 @@ function HeroDemoCard() {
         </span>
       </div>
       <div className="mt-6">
-        <ContributionGrid
-          habit={{ completions: demoCompletions }}
-          monthLabels={["Mar", "Apr", "May", "Jun", "Jul"]}
-        />
+        <ContributionGrid habit={{ completions: demoCompletions }} />
       </div>
       <div className="mt-6 grid grid-cols-4 gap-3 border-t border-border pt-5">
         <DemoStat
@@ -373,9 +350,9 @@ function BadgesPanel() {
           <h3 className="font-display text-2xl text-ink">Badges</h3>
           <p className="text-sm text-muted-foreground">Earn as you ship.</p>
         </div>
-        <a className="text-sm text-flame hover:underline font-mono" href="#">
+        <Link to="/badges" className="text-sm text-flame hover:underline font-mono">
           View all
-        </a>
+        </Link>
       </div>
       <ul className="mt-6 space-y-4">
         {demoBadges.map((b) => (
@@ -396,6 +373,75 @@ function BadgesPanel() {
         ))}
       </ul>
     </Card>
+  );
+}
+
+function HowItWorksDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="sm:max-w-md paper-card">
+        <DialogHeader>
+          <DialogTitle className="font-display text-2xl">How ShipStreak works</DialogTitle>
+          <DialogDescription>
+            Build streaks, show them off.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="space-y-4 py-4">
+          <div className="flex gap-3">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-flame/10 text-flame">
+              <span className="text-sm font-bold">1</span>
+            </div>
+            <div>
+              <p className="font-medium text-ink">Add a habit</p>
+              <p className="text-sm text-muted-foreground">Pick a name and emoji — takes 10 seconds.</p>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-flame/10 text-flame">
+              <span className="text-sm font-bold">2</span>
+            </div>
+            <div>
+              <p className="font-medium text-ink">Log daily</p>
+              <p className="text-sm text-muted-foreground">Tap a day's square to mark it done. Miss a day and the streak resets.</p>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-flame/10 text-flame">
+              <span className="text-sm font-bold">3</span>
+            </div>
+            <div>
+              <p className="font-medium text-ink">Watch it grow</p>
+              <p className="text-sm text-muted-foreground">Your contribution grid fills up as you build momentum.</p>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-flame/10 text-flame">
+              <span className="text-sm font-bold">4</span>
+            </div>
+            <div>
+              <p className="font-medium text-ink">Share your badge</p>
+              <p className="text-sm text-muted-foreground">Generate a streak badge for your README once you've built a streak.</p>
+            </div>
+          </div>
+          <div className="mt-6 rounded-lg bg-secondary/50 p-4">
+            <p className="text-sm font-medium text-ink mb-2">Why ShipStreak?</p>
+            <ul className="space-y-1 text-sm text-muted-foreground">
+              <li>• Simple, no-signup local tracking</li>
+              <li>• GitHub-style contribution grid</li>
+              <li>• Embeddable streak badges</li>
+            </ul>
+          </div>
+        </div>
+        <div className="flex justify-end">
+          <Button
+            onClick={() => onOpenChange(false)}
+            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            Got it!
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }
 

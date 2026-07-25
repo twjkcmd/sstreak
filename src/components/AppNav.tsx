@@ -17,9 +17,7 @@ export function AppNav({ onCreate }: Props) {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <div className="flex items-center gap-6">
           <Link to="/" className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-flame text-flame-foreground">
-              <Flame className="h-4 w-4" fill="currentColor" />
-            </span>
+            <img src="/favicon.svg" alt="ShipStreak" className="h-8 w-8" />
             <span className="font-display text-2xl text-ink">ShipStreak</span>
           </Link>
           <nav className="hidden items-center gap-1 md:flex">
