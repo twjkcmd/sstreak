@@ -21,13 +21,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "A habit-streak tracker for indie makers. GitHub-style heatmaps, live streak badges you can drop into any README.",
+          "A habit-streak tracker for indie makers. GitHub-style heatmaps, streak badges you can drop into any README.",
       },
       { property: "og:title", content: "ShipStreak — Track streaks. Show them off." },
       {
         property: "og:description",
         content:
-          "Track daily coding, writing, and shipping habits. Share live streak badges anywhere.",
+          "Track daily coding, writing, and shipping habits. Share streak badges anywhere.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -110,7 +110,7 @@ function Hero() {
         </h1>
         <p className="mt-6 max-w-lg text-lg text-muted-foreground">
           A daily-habit tracker built for indie makers. Log your streaks in one
-          click, watch the contribution grid fill up, and embed live badges
+          click, watch the contribution grid fill up, and embed badges
           anywhere your readers can see them.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">

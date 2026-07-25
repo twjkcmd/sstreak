@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="199" height="22" viewBox="0 0 199 22" role="img" aria-label="ShipStreak: Test 🔥 5 days">
+  <linearGradient id="ss-b" x2="0" y2="100%">
+    <stop offset="0" stop-color="#fff" stop-opacity=".2" />
+    <stop offset="1" stop-opacity=".15" />
+  </linearGradient>
+  <clipPath id="ss-c">
+    <rect width="199" height="22" rx="4" fill="#fff" />
+  </clipPath>
+  <g clip-path="url(#ss-c)">
+    <rect width="120" height="22" fill="#2b2118" />
+    <rect x="120" width="79" height="22" fill="#e5622a" />
+    <rect width="199" height="22" fill="url(#ss-b)" />
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="'JetBrains Mono', Consolas, monospace" font-size="11">
+    <text x="60" y="15">ShipStreak: Test</text>
+    <text x="159.5" y="15">🔥 5 days</text>
+  </g>
+</svg>

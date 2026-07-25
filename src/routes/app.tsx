@@ -23,12 +23,12 @@ export const Route = createFileRoute("/app")({
       { title: "Your habits · ShipStreak" },
       {
         name: "description",
-        content: "Track your daily habits, streaks, and share live badges.",
+        content: "Track your daily habits, streaks, and share badges.",
       },
       { property: "og:title", content: "Your habits · ShipStreak" },
       {
         property: "og:description",
-        content: "Track your daily habits, streaks, and share live badges.",
+        content: "Track your daily habits, streaks, and share badges.",
       },
       { name: "robots", content: "noindex" },
     ],

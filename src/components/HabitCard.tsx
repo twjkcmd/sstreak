@@ -34,14 +34,14 @@ export function HabitCard({ habit, onToggleDay, onDelete, onRename }: Props) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(habit.name);
 
-  const embed = `![ShipStreak](https://shipstreak.app/api/badge?streak=${cs}&name=${encodeURIComponent(
+  const embed = `![ShipStreak](${window.location.origin}/api/badge.svg?streak=${cs}&name=${encodeURIComponent(
     habit.name,
   )})`;
 
   function copyEmbed() {
     navigator.clipboard.writeText(embed).then(() => {
-      toast.success("Embed code copied", {
-        description: "Paste it into your README or blog.",
+      toast.success("Badge copied", {
+        description: "Paste it into your README or blog. Re-copy to update streak.",
       });
     });
   }
@@ -127,7 +127,7 @@ export function HabitCard({ habit, onToggleDay, onDelete, onRename }: Props) {
       <div className="mt-5 rounded-xl bg-secondary/60 p-4">
         <div className="mb-2 flex items-center justify-between">
           <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
-            Live badge · {completion}% complete
+            Badge · {completion}% complete
           </span>
           <Button
             onClick={copyEmbed}
