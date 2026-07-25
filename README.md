@@ -1,18 +1,36 @@
-# Welcome to your Lovable project
+# 🔥 ShipStreak
 
-This project was built with [Lovable](https://lovable.dev).
+A dead-simple, no-signup habit tracker for makers — log your streaks with one click, watch a GitHub-style contribution grid fill up, and embed a live badge of your streak right in your README.
 
-## Build with Lovable
+**Live app:** [sstreak.vercel.app](https://sstreak.vercel.app)
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## Why
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+Most habit trackers are mobile apps that lock your streak away in a private dashboard. ShipStreak is built for people who already live on GitHub — track your habit in the browser, no account needed, and show it off where your work already lives.
 
-## Development
+## Features
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+- 📊 GitHub-style contribution grid — click a square to log the day
+- 🔥 Automatic current / longest / total streak calculation
+- 🏆 Unlockable achievement badges (7-day streak, 30-day streak, and more)
+- 🖼️ Embeddable streak badge for your own README or blog
+- 💾 Fully local — your data stays in your browser, no account required
+
+## Embed your streak badge
+
+Open your habit in the app and hit **Copy embed** to get a Markdown snippet like this:
+
+```md
+![ShipStreak](https://sstreak.vercel.app/api/badge.svg?name=YourHabit&streak=7)
+```
+
+Example:
+
+![ShipStreak](https://sstreak.vercel.app/api/badge.svg?streak=6&name=Vibe%20Coding)
+
+The badge is a snapshot of your streak at copy-time (not a live-updating widget) — just re-copy it whenever you want to show an updated number.
+
+## Running locally
 
 ```sh
 git clone <this-repository-url>
@@ -27,3 +45,4 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+- Deployed on Vercel
