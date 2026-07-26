@@ -97,7 +97,7 @@ export function ContributionGrid({
                               ? "bg-violet-bright ring-1 ring-inset ring-white/10"
                               : "bg-cell-0 hover:bg-cell-1",
                         isToday &&
-                          "ring-2 ring-flame ring-offset-2 ring-offset-background shadow-[0_0_8px_rgba(251,146,60,0.4)]",
+                          "ring-2 ring-inset ring-flame shadow-[0_0_8px_rgba(251,146,60,0.4)]",
                         interactive && !isEmpty && !isFuture && "cursor-pointer hover:brightness-110",
                       )}
                     />
