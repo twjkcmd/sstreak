@@ -21,7 +21,7 @@ export function AppNav({ onCreate }: Props) {
             <img src="/favicon.svg" alt="ShipStreak" className="h-8 w-8" />
             <span className="font-display text-2xl text-ink">ShipStreak</span>
           </Link>
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="flex items-center gap-1">
             <Link to="/app">
               <NavTab active={isHabitsActive}>Habits</NavTab>
             </Link>
