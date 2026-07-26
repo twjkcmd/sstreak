@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { addDays, todayKey } from "@/lib/habits";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -85,6 +86,7 @@ function Nav() {
           <span className="font-display text-2xl text-ink">ShipStreak</span>
         </Link>
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Button
             asChild
             className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90"

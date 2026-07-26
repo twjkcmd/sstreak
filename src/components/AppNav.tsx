@@ -2,6 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { Flame } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AddHabitDialog } from "./AddHabitDialog";
+import { ThemeToggle } from "./ThemeToggle";
 
 type Props = {
   onCreate?: (h: { name: string; emoji: string }) => void;
@@ -29,7 +30,10 @@ export function AppNav({ onCreate }: Props) {
             </Link>
           </nav>
         </div>
-        {onCreate && <AddHabitDialog onCreate={onCreate} />}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          {onCreate && <AddHabitDialog onCreate={onCreate} />}
+        </div>
       </div>
     </header>
   );
