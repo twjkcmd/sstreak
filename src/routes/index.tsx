@@ -113,7 +113,7 @@ function Hero({ onOpenHowItWorks }: { onOpenHowItWorks: () => void }) {
           <span className="h-1.5 w-1.5 rounded-full bg-flame animate-pulse" />
           Track. Build. Share.
         </div>
-        <h1 className="mt-6 font-display text-6xl leading-[0.95] tracking-tight text-ink md:text-7xl">
+       <h1 className="mt-6 font-display text-7xl leading-[0.95] tracking-tight text-ink md:text-8xl">
           Track streaks. <br />
           <span className="italic text-flame">Show them off.</span>
         </h1>
