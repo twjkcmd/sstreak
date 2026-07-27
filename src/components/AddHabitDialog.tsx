@@ -42,8 +42,8 @@ export function AddHabitDialog({ onCreate, trigger }: Props) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {trigger ?? (
-          <Button className="bg-flame text-flame-foreground hover:bg-flame/90 rounded-full">
-            <Plus className="mr-1 h-4 w-4" /> New habit
+          <Button className="bg-flame text-flame-foreground hover:bg-flame/90 rounded-full px-3 sm:px-4 text-sm sm:text-base">
+            <Plus className="mr-1 h-4 w-4" /> <span className="hidden sm:inline">New habit</span><span className="sm:hidden">New</span>
           </Button>
         )}
       </DialogTrigger>
