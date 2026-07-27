@@ -42,9 +42,9 @@ export function ContributionGrid({
 
   return (
     <TooltipProvider>
-      <div className="flex w-full flex-col">
+      <div className="flex w-full min-w-0 flex-col">
         <div
-          className="grid w-full"
+          className="grid w-full min-w-0"
           style={{
             gridTemplateColumns: showLabels
               ? `auto repeat(${cols}, minmax(0, 1fr))`

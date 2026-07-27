@@ -93,9 +93,9 @@ function AppPage() {
   })();
 
   return (
-    <div className="min-h-screen bg-background grain">
+    <div className="min-h-screen bg-background grain overflow-x-hidden">
       <AppNav onCreate={addHabit} />
-      <main className="mx-auto max-w-6xl px-6 pb-24 pt-6">
+      <main className="mx-auto max-w-6xl px-4 pb-24 pt-6 sm:px-6">
         <div className="mb-8">
           <h1 className="font-display text-4xl text-ink">Your habits</h1>
           <p className="mt-1 text-muted-foreground">
